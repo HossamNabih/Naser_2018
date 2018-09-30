@@ -19,11 +19,8 @@ module.exports = function init(site) {
       pre_balance : info.pre_balance,
       sourceName : info.sourceName  || ''
     }
-    $safes_payments.add(obj,(err,doc)=>{
-      safes_payments.busy = true
-    })
-    }00);
-    }
+    $safes_payments.add(obj);
+  
   }) 
 
   site.on('[safes][safes_payments][-]',  info => {
