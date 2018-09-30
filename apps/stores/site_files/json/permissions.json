@@ -1,0 +1,11 @@
+[
+    {"name" : "stores", "ar" : "ادارة المخازن" , "en" :"Stores Management"},
+    {"name" : "categories_items", "ar" : "ادارة قطع الغيار" , "en" :"Categories items Management"},
+    {"name" : "stores_in", "ar" : "ادارة اذن الدخول" , "en" :"Stores In Management"},
+    {"name" : "stores_out", "ar" : "ادارة اذن الصرف" , "en" :"Stores Out Management"},
+    {"name" : "eng_item_list", "ar" : "ادارة عهدة الفنى" , "en" :"Eng item list Management"},
+    {"name" : "tax_types", "ar" : "ادارة الضرائب" , "en" :"Tax Management"},
+    {"name" : "discount_types", "ar" : "ادارة الخصومات" , "en" :"Discounts Management"},
+    {"name" : "item_transaction", "ar" : "ادارة مراقبة المخزون" , "en" :"Store Notifications Management"}
+
+]

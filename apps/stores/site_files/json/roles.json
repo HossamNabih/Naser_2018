@@ -1,0 +1,8 @@
+[
+    {
+        "name" : "stores",
+        "ar" : "ادارة المخازن",
+        "en"  :"Stores Management",
+        "permissions" : ["stores" ,"categories_items" ,"stores_in","stores_out","eng_item_list","tax_types","discount_types","item_transaction"]
+    }
+]

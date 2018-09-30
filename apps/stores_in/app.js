@@ -2,7 +2,7 @@ module.exports = function init(site) {
 
   const $stores_in = site.connectCollection("stores_in")
  
-  site.require(__dirname + "/libs/monitor")
+
   
   $stores_in.deleteDuplicate( {number : 1 } , (err , result)=>{
     $stores_in.createUnique({number : 1 } , (err , result)=>{
@@ -240,7 +240,6 @@ module.exports = function init(site) {
         response.done = true
         response.list = docs
         response.count = count
-//console.log(docs)
         
       } else {
         response.error = err.message

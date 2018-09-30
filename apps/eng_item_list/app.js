@@ -49,7 +49,6 @@ module.exports = function init(site) {
         obj.size = itm.size
         obj.price = site.toNumber(itm.price)
         obj.number = site.toNumber(eng_item_list_doc.number)
-        obj.safe = eng_item_list_doc.safe
         obj.status = 'waiting'
         $eng_item_list.add(obj, (err, doc) => {
           if (!err) {

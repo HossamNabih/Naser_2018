@@ -1,15 +1,25 @@
 module.exports = function init(site) {
 
+  let collection_name = 'stores'
+
+ let source = {
+    name : 'Address System' ,
+    ar : 'نظام العناوين'
+  }
+
+  let image_url = '/images/stores.png'
+  let add_message = {name : 'New store Added' , ar : 'تم أضافة مخزن جديدة'}
+  let update_message =  {name : ' Store updated' , ar : 'تم تعديل مخزن'}
+  let delete_message =  {name : ' Store dleteted' , ar : 'تم حذف مخزن '}
+
+
   site.on('mongodb after insert', function (result) {
-      if (result.collection === 'stores') {
+      if (result.collection === collection_name) {
         site.call('please monitor action' , { obj : {
-          icon: '/images/store.png',
-          source: "Stores System",
-          source_ar: "نظام المخازن",
-          message: "New Store Added",
-          message_ar: "تم أضافة مخزن جديد",
-          value: result.doc.name,
-          value_ar: result.doc.name,
+          icon: image_url,
+          source: source,
+          message: add_message ,
+          value: { name : result.doc.name , ar : result.doc.name},
           add: result.doc,
           action: 'add'
         }, result : result })
@@ -17,16 +27,13 @@ module.exports = function init(site) {
   })
 
   site.on('mongodb after update', function (result) {
-      if (result.collection === 'stores') {
+      if (result.collection === collection_name) {
         site.call('please monitor action' , { obj : {
-          icon: '/images/store.png',
-          source: "Stores System",
-          source_ar: "نظام المخازن",
-          message: "New Store Updated",
-          message_ar: "تم تعديل مخزن ",
-          value: result.doc.name,
-          value_ar: result.doc.name,
-          update: site.objectDiff(result.update.$set, result.doc),
+          icon: image_url,
+          source : source,
+          message: update_message ,
+          value: {name : result.old_doc.name , ar : result.old_doc.name},
+          update: site.objectDiff(result.update.$set, result.old_doc),
           action: 'update'
         }, result : result })
       }
@@ -34,15 +41,12 @@ module.exports = function init(site) {
 
 
   site.on('mongodb after delete', function (result) {
-      if (result.collection === 'stores') {
+      if (result.collection === collection_name) {
         site.call('please monitor action' , { obj : {
-          icon: '/images/store.png',
-          source: "Stores System",
-          source_ar: "نظام المخازن",
-          message: " Store Deleted",
-          message_ar: "تم حذف مخزن ",
-          value: result.doc.name,
-          value_ar: result.doc.name,
+          icon: image_url,
+          source: source ,
+          message: delete_message ,
+          value: {name : result.doc.name , ar : result.doc.name},
           delete: result.doc,
           action: 'delete'
         }, result : result })

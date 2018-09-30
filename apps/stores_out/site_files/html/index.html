@@ -15,7 +15,7 @@
     <div x-import="menu/index.html"></div>
 
 
-    <div id="main-layout" class="container">
+    <div x-permission="stores" id="main-layout" class="container">
         <div class="row ">
             <div class="row" ng-controller="stores_out">
                 <div x-import="stores_out/add_modal.html"></div>
@@ -28,8 +28,8 @@
                 </div>
                 <div class="top-actions">
 
-                    <i-button type="add" label="##word.stores_out_neew##" x-permission="owner" ng-click="newStore_Out()" > </i-button>
-                    <i-button type="search" label="##word.search_all##" x-permission="owner" onclick="site.showModal('#StoresOutSearchModal')"  > </i-button>
+                    <i-button type="add" label="##word.stores_out_neew##" ng-click="newStore_Out()" > </i-button>
+                    <i-button type="search" label="##word.search_all##" onclick="site.showModal('#StoresOutSearchModal')"  > </i-button>
 
                     <span ng-show="busy">
                         <i class="fa fa-spinner white fa-pulse fa-3x fa-fw"></i>
@@ -46,7 +46,7 @@
                         <th>##word.stores_out_store##</th>
                         <th>##word.stores_out_safe##</th>
 
-                        <th x-permission="owner" class="not-print">##word.actions##</th>
+                        <th  class="not-print">##word.actions##</th>
                     </tr>
                     <tr ng-repeat="c in list">
 
@@ -67,11 +67,11 @@
                                 <br>
                             <p class="bold text-center green"> {{c.safe.name}} </p>
                         </td>
-                        <td x-permission="owner" class="center not-print">
-                            <i-button type="details" label="##word.details##" x-permission="owner" ng-click="details(c)" > </i-button>
+                        <td  class="center not-print">
+                            <i-button type="details" label="##word.details##"  ng-click="details(c)" > </i-button>
 
 
-                            <i-button type="delete" label="##word.delete##" x-permission="developer" ng-click="remove(c)"> </i-button>
+                            <i-button type="delete" label="##word.delete##" ng-click="remove(c)"> </i-button>
 
                             
                         </td>
@@ -88,7 +88,7 @@
     </div>
 
     <div x-import="scripts.html"></div>
-    <script x-import="stores_out/index.js"></script>
+    <script x-permission="stores" x-import="stores_out/index.js"></script>
 
 </body>
 

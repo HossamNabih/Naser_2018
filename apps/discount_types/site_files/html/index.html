@@ -15,7 +15,7 @@
 <div x-import="menu/index.html"></div>
 
 
-    <div id="main-layout" class="container">
+    <div  x-permission="stores" id="main-layout" class="container">
         <div class="row10 center">
             <div class="col10" ng-controller="discount_types">
                 <div x-import="discount_types/add_modal.html"></div>
@@ -23,7 +23,7 @@
                 <div x-import="discount_types/delete_modal.html"></div>
                 <div x-import="discount_types/view_modal.html"></div>
                 <div class="top-actions">
-                    <i-button type="add" label="##word.discount_types_new##" x-permission="owner" ng-click="newDiscount_Type()"></i-button>
+                    <i-button type="add" label="##word.discount_types_new##"  ng-click="newDiscount_Type()"></i-button>
                     
                     <span ng-show="busy">
                         <i class="fa fa-spinner white fa-pulse fa-3x fa-fw"></i>
@@ -36,7 +36,7 @@
                         <th>##word.discount_types_logo##</th>
                         <th>##word.discount_types_name##</th>
                         <th>##word.discount_types_value##</th>
-                        <th x-permission="owner">##word.actions##</th>
+                        <th >##word.actions##</th>
                     </tr>
                     <tr ng-repeat="c in list">
                         <td>
@@ -46,9 +46,9 @@
                         <td ng-show="c.type === '%'">{{c.value}} % </td>
                         <td ng-show="c.type !== '%'">{{c.value}} جنيه</td>
                        
-                        <td x-permission="owner" class="center">
-                                <i-button type="details" label="##word.details##" x-permission="owner" ng-click="details(c)"></i-button>
-                                <i-button type="update" label="##word.update##" x-permission="owner" ng-click="edit(c)"></i-button>
+                        <td class="center">
+                                <i-button type="details" label="##word.details##"  ng-click="details(c)"></i-button>
+                                <i-button type="update" label="##word.update##"  ng-click="edit(c)"></i-button>
                                 <i-button type="delete" label="##word.delete##" ng-click="remove(c)"></i-button>
 
             
@@ -66,7 +66,7 @@
 
  
     <div x-import="scripts.html"></div>
-    <script x-import="discount_types/index.js"></script>
+    <script x-permission="stores" x-import="discount_types/index.js"></script>
    
 </body>
 

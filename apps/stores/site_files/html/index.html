@@ -14,7 +14,7 @@
 
     <div x-import="menu/index.html"></div>
 
-    <div id="main-layout" class="container">
+    <div id="main-layout" class="container" x-permission="stores">
         <div class="row ">
             <div class="row" ng-controller="stores">
                 <div x-import="stores/add_modal.html"></div>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="top-actions">
                     
-                    <i-button type="add" label="##word.stores_new##" ng-click="newStore()" x-permission="store"></i-button>
+                    <i-button type="add" label="##word.stores_new##" ng-click="newStore()" ></i-button>
                     <span ng-show="busy">
                         <i class="fa fa-spinner white fa-pulse fa-3x fa-fw"></i>
                         <span class="sr-only">Loading...</span>
@@ -37,7 +37,7 @@
                     <tr>
                         <th class="not-print">##word.stores_logo##</th>
                         <th>##word.stores_name##</th>
-                        <th x-permission="owner" class="not-print">##word.actions##</th>
+                        <th  class="not-print">##word.actions##</th>
                     </tr>
                     <tr ng-repeat="c in list">
                         <td class="not-print">
@@ -47,10 +47,10 @@
                         <td class="center bold">
                             <br>
                             {{c.name}}</td>
-                        <td x-permission="owner" class="center not-print">
+                        <td class="center not-print">
                             <i-button type="details" label="##word.details##" ng-click="details(c)"></i-button>
-                            <i-button type="update" label="##word.update##" ng-click="edit(c)" x-permission="developer"></i-button>
-                            <i-button type="delete" label="##word.delete##" ng-click="remove(c)" x-permission="developer"></i-button>
+                            <i-button type="update" label="##word.update##" ng-click="edit(c)" ></i-button>
+                            <i-button type="delete" label="##word.delete##" ng-click="remove(c)" ></i-button>
 
                         </td>
                     </tr>
@@ -69,7 +69,7 @@
 
 
     <div x-import="scripts.html"></div>
-    <script x-import="stores/index.js"></script>
+    <script x-permission="stores" x-import="stores/index.js"></script>
 
 
 </body>

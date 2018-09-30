@@ -11,7 +11,7 @@
     <div x-import="menu/index.html"></div>
 
 
-    <div id="main-layout" class="container">
+    <div x-permission="stores" id="main-layout" class="container">
         <div class="row ">
             <div class="row" ng-controller="eng_item_list">
                 <div x-import="eng_item_list/add_modal.html"></div>
@@ -23,8 +23,8 @@
                     <h1 class="white bold text-center"> ##word.stores_out_engineers##  </h1>
                 </div>
                 <div class="top-actions">
-                <i-button type="add" label="##word.stores_out_new##" x-permission="owner" ng-click="newStore_Out()"></i-button>
-                <i-button type="search" label="##word.search_all##" x-permission="owner" onclick="site.showModal('#StoresOutSearchModal')"></i-button>
+                <i-button type="add" label="##word.stores_out_new##"  ng-click="newStore_Out()"></i-button>
+                <i-button type="search" label="##word.search_all##"  onclick="site.showModal('#StoresOutSearchModal')"></i-button>
                    
 
                     <span ng-show="busy">
@@ -54,7 +54,7 @@
                         <th>##word.stores_in_item_status##</th>
 
 
-                        <th x-permission="owner" class="not-print">##word.actions##</th>
+                        <th  class="not-print">##word.actions##</th>
                     </tr>
 
 
@@ -115,8 +115,8 @@
                                 </p>
                         </td>
 
-                        <td x-permission="owner" class="center not-print">
-                            <i-button type="delete" label="##word.delete##" ng-hide="c.status == 'used'" ng-click="remove(c)" x-permission="developer"></i-button>
+                        <td  class="center not-print">
+                            <i-button type="delete" label="##word.delete##" ng-hide="c.status == 'used'" ng-click="remove(c)" ></i-button>
                            
 
                     </tr>
@@ -130,7 +130,7 @@
 
     
     <div x-import="scripts.html"></div>
-    <script x-import="eng_item_list/index.js"></script>
+    <script x-permission="stores" x-import="eng_item_list/index.js"></script>
 
 </body>
 

@@ -6,7 +6,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.require(__dirname + '/libs/monitor');
+
 
   $categories_items.busy = false
   site.on('[ store in ] [categories items]' , (result)=>{

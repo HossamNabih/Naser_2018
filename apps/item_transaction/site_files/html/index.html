@@ -8,7 +8,7 @@
     <div x-import="menu/index.html"></div>
 
 
-    <div id="main-layout" class="container">
+    <div x-permission="stores" id="main-layout" class="container">
         <div class="row">
             <div class="row" ng-controller="item_transaction">
                 <div x-import="item_transaction/delete_modal.html"></div>
@@ -18,7 +18,7 @@
                     <h1 class="white bold text-center">##word.item_transaction##</h1>
                 </div>
                 <div class="top-actions">
-                    <i-button type="search" label="##word.search_all##" x-permission="owner" onclick="site.showModal('#itemTransactionSearchModal')"></i-button>
+                    <i-button type="search" label="##word.search_all##"  onclick="site.showModal('#itemTransactionSearchModal')"></i-button>
 
                    
 
@@ -85,7 +85,7 @@
     </div>
 
     <div x-import="scripts.html"></div>
-    <script x-import="item_transaction/index.js"></script>
+    <script x-permission="stores" x-import="item_transaction/index.js"></script>
 
 </body>
 

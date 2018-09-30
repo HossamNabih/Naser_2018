@@ -1,19 +1,6 @@
 module.exports = function init(site) {
 
-  site.createDir(site.dir + "/../../uploads", (err, dir) => {
-    site.createDir(site.dir + "/../../uploads/crm", (err, dir) => {
-      site.createDir(site.dir + "/../../uploads/crm/discount_types", (err, dir) => {
-        site.createDir(site.dir + "/../../uploads/crm/discount_types/files", (err, dir) => {
-
-        })
-        site.createDir(site.dir + "/../../uploads/crm/discount_types/images", (err, dir) => {
-
-        })
-      })
-    })
-  })
-
-
+ 
   const $discount_types = site.connectCollection("discount_types")
   site.words.addList(__dirname + '/site_files/json/words.json')
 

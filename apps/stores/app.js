@@ -1,17 +1,6 @@
 module.exports = function init(site) {
 
-  site.createDir(site.dir + "/../../uploads", (err, dir) => {
-    site.createDir(site.dir + "/../../uploads/crm", (err, dir) => {
-      site.createDir(site.dir + "/../../uploads/crm/stores", (err, dir) => {
-        site.createDir(site.dir + "/../../uploads/crm/stores/files", (err, dir) => {
-
-        })
-        site.createDir(site.dir + "/../../uploads/crm/stores/images", (err, dir) => {
-
-        })
-      })
-    })
-  })
+ 
 
   const $stores = site.connectCollection("stores")
   site.words.addList(__dirname + '/site_files/json/words.json')
