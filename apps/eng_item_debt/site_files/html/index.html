@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+
+<head x-import="head.html">
+
+</head>
+
+<body>
+
+    <nav x-import="navbar.html" class="navbar" data-ng-controller="navbar"></nav>
+    <div x-import="menu/index.html"></div>
+
+
+    <div x-permission="stores" id="main-layout" class="container">
+        <div class="row ">
+            <div class="row" ng-controller="eng_item_debt">
+                <div x-import="eng_item_debt/add_modal.html"></div>
+                <div x-import="eng_item_debt/update_modal.html"></div>
+                <div x-import="eng_item_debt/delete_modal.html"></div>
+                <div x-import="eng_item_debt/view_modal.html"></div>
+                <div x-import="eng_item_debt/search_all_modal.html"></div>
+                <div class="row">
+                    <h1 class="white bold text-center"> ##word.eng_item_debt_engineers##  </h1>
+                </div>
+                <div class="top-actions">
+                <i-button type="add" label="##word.eng_item_debt_new##"  ng-click="newStore_Out()"></i-button>
+                <i-button type="search" label="##word.search_all##"  onclick="site.showModal('#StoresOutSearchModal')"></i-button>
+                   
+
+                    <span ng-show="busy">
+                        <i class="fa fa-spinner white fa-pulse fa-3x fa-fw"></i>
+                        <span class="sr-only">Loading...</span>
+                    </span>
+                    <h3 class="white bold"> ##word.eng_item_debt_result_count## : {{count}}</h3>
+                </div>
+
+                <table class="table loaded center hover" id="t1">
+                    <tr>
+                        <th>##word.eng_item_debt_date##
+                        </th>
+                        <th>
+                         
+                            <br>
+                            ##word.eng_item_debt_store_eng##
+                        </th>
+                        <th>##word.eng_item_debt_item_name##</th>
+                        <th>
+                            ##word.eng_item_debt_item_number##
+                            <br>
+                          
+                        </th>
+                        <th>##word.eng_item_debt_item_size##</th>
+                        <th>##word.eng_item_debt_item_count##</th>
+                        <th>##word.eng_item_debt_item_status##</th>
+
+
+                        <th  class="not-print">##word.actions##</th>
+                    </tr>
+
+
+
+                    
+
+                    <tr ng-repeat="c in list">
+                        <td>
+                            <p class="text-center  bold blue"> {{c.date | date : 'dd - MM - yyyy'}} </p>
+                        </td>
+                        <td>
+                            <p class="bold brown text-center">
+                                <br>
+                                <span class="center bold red padding">({{c.eng.name}})</span>
+                               
+                            </p>
+                        </td>
+
+                        <td>
+                            <p class="bold brown text-center">
+                                    <br>
+                                {{c.name}}
+                            </p>
+                        </td>
+                        <td>
+                            <p class="bold brown text-center">
+                                
+                                {{c.ticket_number}}
+                                <br>
+                                <br> 
+                              
+                                
+                            </p>
+                        </td>
+
+                        <td>
+                            <p class="bold brown text-center">
+                                    <br>
+                                {{c.size}}
+                            </p>
+                        </td>
+                        <td>
+                            <p class="bold brown text-center">
+                                    <br>
+                                {{c.count}}
+                            </p>
+                        </td>
+                        <td class="center bold">
+                                <br>
+                            <p ng-show="c.status == 'used'" class=" bold green text-center" >
+                                    ##word.eng_item_debt_item_status_used##
+                            </p>
+                            <p ng-show="c.status == 'used'" class=" bold brown text-center" >
+                                    {{c.ticket_code}}
+                                </p>
+                            <p ng-show="c.status !== 'used'" class=" text-center" >
+                                    ##word.eng_item_debt_item_status_notused##
+                                </p>
+                        </td>
+
+                        <td  class="center not-print">
+                            <i-button type="delete" label="##word.delete##" ng-hide="c.status == 'used'" ng-click="remove(c)" ></i-button>
+                           
+
+                    </tr>
+
+                </table>
+                <i-button type="print" label="##word.print##" onclick="site.print('#t1')"></i-button>  
+
+            </div>
+        </div>
+    </div>
+
+    
+    <div x-import="scripts.html"></div>
+    <script x-permission="stores" x-import="eng_item_debt/index.js"></script>
+
+</body>
+
+</html>
