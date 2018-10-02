@@ -1,0 +1,23 @@
+
+<div id="updateEngItemDebtModal" class="modal">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>
+                     ##word.eng_item_debt_delivered_details##
+                    <i ng-show="busy" class="fa fa-spinner white fa-pulse fa-3x fa-fw"></i>
+                </h2>
+            </div>
+            <div class="modal-body">
+                <div x-import="eng_item_debt/delivered.html"></div>
+    
+            </div>
+            <h2 class="error">{{error}}</h2>
+            <div class="modal-footer center">
+                    <i-button type="update" id="update_eng_item_debt_btn" ng-click="update(eng_item_debt)" label="##word.update##"></i-button>
+                    <i-button type="close" label="##word.close##"  onclick="site.hideModal('#updateEngItemDebtNotDeliveredModal')"></i-button>    
+                        
+                    </div>
+        </div>
+    </div>

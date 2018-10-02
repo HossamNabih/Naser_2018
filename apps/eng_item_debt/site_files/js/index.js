@@ -5,6 +5,9 @@ app.controller("eng_item_debt", function ($scope, $http, $timeout) {
 
   $scope.item = { sizes: [] };
 
+
+  $scope.btn = 'note'
+
   $scope.addTax = function () {
     $scope.eng_item_debt.taxes = $scope.eng_item_debt.taxes || [];
     $scope.eng_item_debt.taxes.push({
@@ -239,10 +242,12 @@ app.controller("eng_item_debt", function ($scope, $http, $timeout) {
   $scope.searchAll = function () {
     let where = {};
 
-    if ($scope.search.ticket_number) {
-      where['ticket_number'] = $scope.search.ticket_number;
+    if ($scope.search.number) {
+      where['number'] = $scope.search.number;
     }
- 
+    if ($scope.search.store) {
+      where['store.id'] = $scope.search.store.id;
+    }
     if ($scope.search.date) {
       where['date'] = $scope.search.date;
     }
@@ -263,31 +268,7 @@ app.controller("eng_item_debt", function ($scope, $http, $timeout) {
     if($scope.search.eng){
       where['eng.name'] = $scope.search.eng.name;
     }
-/*
-    if ($scope.search.company && $scope.search.company.id) {
-      where['company.id'] = $scope.search.company.id;
-    }
 
-
-    if ($scope.search.total_valueGt) {
-      where['total_value'] = {
-        $gte: parseFloat($scope.search.total_valueGt)
-      };
-    }
-
-    if ($scope.search.total_valueLt) {
-      where['total_value'] = {
-        $lte: parseFloat($scope.search.total_valueLt)
-      };
-    }
-
-    if ($scope.search.total_valueGt && $scope.search.total_valueLt) {
-      where['total_value'] = {
-        $gte: parseFloat($scope.search.total_valueGt),
-        $lte: parseFloat($scope.search.total_valueLt)
-      };
-    }
-*/
 
     $scope.loadAll(where);
     
@@ -375,22 +356,44 @@ $scope.loadAll = function (where) {
 
   $scope.edit = function (eng_item_debt) {
     $scope.error = '';
+    
+    
     $scope.view(eng_item_debt);
     $scope.eng_item_debt = {};
-    site.showModal('#updateStoreOutModal');
+   
+    site.showModal('#updateEngItemDebtModal');
+   
+
+  };
+  
+  $scope.editnote = function (eng_item_debt) {
+    $scope.error = '';
+    $scope.view(eng_item_debt);
+    $scope.eng_item_debt = {};
+
+    site.showModal('#updateEngItemDebtNotDeliveredModal');
+    
   };
 
   $scope.update = function () {
     $scope.error = '';
-    const v = site.validated();
-    if (!v.ok) {
-      $scope.error = v.messages[0].ar;
-      return;
-    }
+
+   
+   
     if ($scope.eng_item_debt.length <= 0) {
       document.getElementById("req").setAttribute("v" , "r");
       return;
     }
+    
+      if( $scope.eng_item_debt.store){
+        $scope.eng_item_debt.deliver_status = true
+      }else{
+      $scope.eng_item_debt.deliver_status = false
+      
+    }
+    
+ 
+   
     $scope.busy = true;
     $http({
       method: "POST",
@@ -400,7 +403,9 @@ $scope.loadAll = function (where) {
       function (response) {
         $scope.busy = false;
         if (response.data.done) {
-          site.hideModal('#updateStoreOutModal');
+          site.hideModal('#updateEngItemDebtModal');
+          site.hideModal('#updateEngItemDebtNotDeliveredModal ');
+
           $scope.loadAll();
         } else {
           $scope.error = '##word.error##';
@@ -412,6 +417,7 @@ $scope.loadAll = function (where) {
     )
   };
 
+ 
   $scope.remove = function (eng_item_debt) {
     $scope.error = '';
     $scope.view(eng_item_debt);
@@ -490,6 +496,7 @@ $scope.loadAll = function (where) {
           cost: s.cost,
           price: s.price,
           total: s.total,
+        
          
         });
       }

@@ -34,21 +34,23 @@ module.exports = function init(site) {
     eng_item_debt_doc.$res = res
 
     eng_item_debt_doc.date = site.toDateTime(eng_item_debt_doc.date)
-    console.log(eng_item_debt_doc)
+    console.log(req.body)
     eng_item_debt_doc.items.forEach(itm => {
       itm.count = site.toNumber(itm.count)
       for (let i = 0; i < itm.count; i++) {
         let obj = {}
         obj.date = eng_item_debt_doc.date
         obj.eng = eng_item_debt_doc.eng
-     
+        obj.store = eng_item_debt_doc.store
         obj.name = itm.name
         obj.code = itm.code
         obj.cost = site.toNumber(itm.cost)
         obj.count = 1
         obj.size = itm.size
         obj.price = site.toNumber(itm.price)
-        obj.ticket_number = site.toNumber(eng_item_debt_doc.ticket_number)
+        obj.ticket_code = site.toNumber(eng_item_debt_doc.ticket_code)
+        obj.deliver_status = eng_item_debt_doc.deliver_status
+
         obj.status = 'waiting'
         $eng_item_debt.add(obj, (err, doc) => {
           if (!err) {
@@ -83,23 +85,27 @@ module.exports = function init(site) {
       res.json(response)
       return
     }
+    
     let eng_item_debt_doc = req.body
     eng_item_debt_doc.seasonName = eng_item_debt_doc.seasonName
     eng_item_debt_doc.type = site.fromJson(eng_item_debt_doc.type)
     eng_item_debt_doc.date = new Date(eng_item_debt_doc.date)
-
-    eng_item_debt_doc.items.forEach(itm => {
-      itm.count = site.toNumber(itm.count)
-      itm.cost = site.toNumber(itm.cost)
-      itm.price = site.toNumber(itm.price)
-      itm.total = site.toNumber(itm.total)
-    })
+    
+    
+    eng_item_debt_doc.count = site.toNumber(eng_item_debt_doc.count)
+    eng_item_debt_doc.cost = site.toNumber(eng_item_debt_doc.cost)
+    eng_item_debt_doc.price = site.toNumber(eng_item_debt_doc.price)
+    eng_item_debt_doc.total = site.toNumber(eng_item_debt_doc.total)
+   
 
     eng_item_debt_doc.discount = site.toNumber(eng_item_debt_doc.discount)
     eng_item_debt_doc.octazion = site.toNumber(eng_item_debt_doc.octazion)
     eng_item_debt_doc.net_discount = site.toNumber(eng_item_debt_doc.net_discount)
     eng_item_debt_doc.total_value = site.toNumber(eng_item_debt_doc.total_value)
+    eng_item_debt_doc.deliver_status = eng_item_debt_doc.deliver_status;
 
+
+    
     if (eng_item_debt_doc._id) {
       $eng_item_debt.edit({
         where: {
@@ -202,10 +208,6 @@ module.exports = function init(site) {
     if (where && where['name']) {
       where['name'] = new RegExp(where['name'], 'i');
     }
-    if (where && where['ticket_number']) {
-      where['ticket_number'] = site.toNumber(where['ticket_number']);
-    }
-
 
 
 

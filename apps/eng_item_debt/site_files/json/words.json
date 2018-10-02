@@ -70,6 +70,12 @@
     {"name" : "eng_item_debt_total_value_lt" , "en" : "Total Value Lower Than" , "ar" : "اجمالي الاذن اقل من"},
     {"name" : "eng_item_debt_result_count" , "en" : "Result Count" , "ar" : "عدد نتائج البحث"},
     {"name" : "eng_item_debt_season" , "en" : "Season" , "ar" : "الموسم"},
+    {"name" : "eng_item_debt_delivered_details" , "en" : "Delivered details" , "ar" : "تفاصيل الاستلام"},
+    {"name" : "eng_item_debt_delivered_status1" , "en" : "Delivered Done" , "ar" : " تم التسليم"},
+    {"name" : "eng_item_debt_delivered_status2" , "en" : "Delivered not Done" , "ar" : "لم يتم التسليم"},
+
+    {"name" : "Delivered" , "en" : "Delivered Successfully" , "ar" : " تم  التسليم"},
+    {"name" : "Not_Delivered" , "en" : "Not Delivered" , "ar" : "لم يتم التسليم"},
 
     {"name" : "eng_item_debt_logo" , "en" : "Logo" , "ar" : "الشعار"},
     {"name" : "eng_item_debt_id" , "en" : "ID" , "ar" : "المسلسل"},

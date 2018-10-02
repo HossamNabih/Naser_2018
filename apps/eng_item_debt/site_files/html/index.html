@@ -19,6 +19,8 @@
                 <div x-import="eng_item_debt/delete_modal.html"></div>
                 <div x-import="eng_item_debt/view_modal.html"></div>
                 <div x-import="eng_item_debt/search_all_modal.html"></div>
+                <div x-import="eng_item_debt/delivered_modal.html"></div>
+                <div x-import="eng_item_debt/not-delivered_modal.html"></div>
                 <div class="row">
                     <h1 class="white bold text-center"> ##word.eng_item_debt_engineers##  </h1>
                 </div>
@@ -82,7 +84,7 @@
                         <td>
                             <p class="bold brown text-center">
                                 
-                                {{c.ticket_number}}
+                                {{c.ticket_code}}
                                 <br>
                                 <br> 
                               
@@ -104,19 +106,30 @@
                         </td>
                         <td class="center bold">
                                 <br>
+
+                            <p  class=" bold green text-center" >
+                                    <span class=" bold green text-center"  ng-show="c.deliver_status == true">##word.Delivered##
+
+                                    <br>
+                                        {{c.store.name}}
+                                    </span>
+                                    <span class=" bold red text-center"  ng-show="c.deliver_status == false">##word.Not_Delivered##</span>
+
+                                </p>
                             <p ng-show="c.status == 'used'" class=" bold green text-center" >
                                     ##word.eng_item_debt_item_status_used##
                             </p>
-                            <p ng-show="c.status == 'used'" class=" bold brown text-center" >
-                                    {{c.ticket_code}}
-                                </p>
+                           
                             <p ng-show="c.status !== 'used'" class=" text-center" >
                                     ##word.eng_item_debt_item_status_notused##
                                 </p>
                         </td>
 
                         <td  class="center not-print">
-                            <i-button type="delete" label="##word.delete##" ng-hide="c.status == 'used'" ng-click="remove(c)" ></i-button>
+                            <i-button  type="details" label="##word.details##" ng-click="details(c)"></i-button>
+                            <i-button ng-hide="c.deliver_status == true || c.deliver_status == false" type="add" label="##word.eng_item_debt_delivered_status1##"   ng-click="edit(c)"></i-button>
+
+                            <i-button ng-hide="c.deliver_status == true || c.deliver_status == false"  type="delete" label="##word.eng_item_debt_delivered_status2##"  ng-hide="c.status == 'used'"  ng-click="editnote(c)" ></i-button>
                            
 
                     </tr>

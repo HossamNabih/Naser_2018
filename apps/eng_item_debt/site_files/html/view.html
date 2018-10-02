@@ -1,7 +1,110 @@
 <div ng-hide="busy" class="row" id="v1">
-   
-    <h2 class="text-center">
-        ##word.eng_item_debt_store_return_item##
-    </h2>
-   
-</div>
+        <div class="col9">
+            <br>
+            <table class="table">
+    
+                <tr>
+                    <td class="title">##word.eng_item_debt_date##</td>
+                    <td>{{eng_item_debt.date | dateX}}</td>
+                </tr>
+                <tr>
+                        <td class="title">##word.eng_item_debt_id##</td>
+                        <td>{{eng_item_debt.ticket_code}}</td>
+                </tr>
+
+                <tr>
+                        <td class="title">##word.eng_item_store##</td>
+                        <td>{{eng_item_debt.store.name}}</td>
+                </tr>
+        
+    
+                <tr>
+                    <td class="title">##word.eng_item_debt_items##</td>
+                    <td>
+                        <table class="table hover">
+                            <tr>
+                                <th>##word.serial##</th>
+                                <th>##word.eng_item_debt_item_name##</th>
+                                <th>##word.eng_item_debt_item_size##</th>
+                                <th>##word.eng_item_debt_item_count##</th>
+                                <th>##word.eng_item_debt_item_cost##</th>
+                                <th class="not-print">##word.eng_item_debt_item_price##</th>
+    
+                            </tr>
+                            <tr>
+                                <td>{{$index + 1}}</td>
+                                <td>{{eng_item_debt.name}}</td>
+                                <td>{{eng_item_debt.size}}</td>
+                                <td>{{eng_item_debt.count}}</td>
+                                <td>{{eng_item_debt.cost}}</td>
+                                <td class="not-print">{{eng_item_debt.price}}</td>
+    
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+    
+                <tr ng-show="eng_item_debt.taxes.length > 0">
+                    <td class="title">##word.eng_item_debt_taxes##</td>
+                    <td>
+                        <table class="table hover margin">
+                            <tr>
+                                <th>##word.eng_item_debt_tax_name##</th>
+                                <th>##word.eng_item_debt_tax_value##</th>
+                            </tr>
+                            <tr ng-repeat="tax in eng_item_debt.taxes">
+                                <td> <p class="text-center"> {{tax.name}} </p> </td>
+                                <td> <p class="text-center"> {{tax.value}} % </p>   </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+    
+                <tr ng-show="eng_item_debt.discountes.length > 0">
+                    <td class="title">##word.eng_item_debt_discountes##</td>
+                    <td>
+                        <table class="table hover margin">
+                            <tr>
+                                <th>##word.eng_item_debt_discount_name##</th>
+                                <th>##word.eng_item_debt_discount_value##</th>
+                            </tr>
+                            <tr ng-repeat="discount in eng_item_debt.discountes">
+                                <td>{{discount.name}}</td>
+                                <td>
+                                    <p class="text-center" ng-show="discount.type == '%'"> {{discount.value}} % </p>
+                                    <p class="text-center" ng-show="discount.type == '0'"> {{discount.value}} جنيه </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td class="title">##word.eng_item_debt_total_value##</td>
+                    <td>{{eng_item_debt.price}} جنيه</td>
+                </tr>
+    
+                <tr>
+                    <td class="title">##word.eng_item_debt_net_value##</td>
+                    <td>{{eng_item_debt.price}} جنيه</td>
+                </tr>
+    
+                <tr>
+                    <td class="title">##word.eng_item_debt_notes##</td>
+                    <td>{{eng_item_debt.notes}}</td>
+                </tr>
+    
+            </table>
+    
+        </div>
+    
+        <div class="col3 center not-print">
+            
+            <br>
+            <i-image  class="img " view ng-model="eng_item_debt.image_url"></i-image>
+            <br>
+            <i-files view ng-model="eng_item_debt.files"></i-files>
+    
+    
+        </div>
+    </div>

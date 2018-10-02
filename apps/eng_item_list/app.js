@@ -99,7 +99,7 @@ module.exports = function init(site) {
     eng_item_list_doc.octazion = site.toNumber(eng_item_list_doc.octazion)
     eng_item_list_doc.net_discount = site.toNumber(eng_item_list_doc.net_discount)
     eng_item_list_doc.total_value = site.toNumber(eng_item_list_doc.total_value)
-
+    eng_item_list_doc.deliver
     if (eng_item_list_doc._id) {
       $eng_item_list.edit({
         where: {
